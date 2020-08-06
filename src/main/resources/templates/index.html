@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+
+<h2>Welcome Page</h2>
+<p th:if="${message}">[[${message}]]</p>
+
+
+<div>
+    <a th:href="@{/admin}">Admin page</a>
+</div>
+<br>
+
+<div>
+    <a th:href="@{/user}">User</a>
+</div>
+
+
+<br><br>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="logout">
+    </form>
+</div>
+
+
+</body>
+</html>
