@@ -13,17 +13,17 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
               integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
               crossorigin="anonymous">
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" th:href="@{/styleSheet/main.css}">
     </div>
 
-    <title>Daves List</title>
+    <title></title>
 </head>
 <body>
 
 <!-- NavBar -->
 <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" th:href="@{/}">Dave's List</a>
+        <a class="navbar-brand" th:href="@{/}">LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,30 +32,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">List of Housing <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}">About</a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" th:href="@{/dave}">Admin</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link" th:href="@{/register}">Add New User</a>
                 </li>
-                <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/dave/addRoomListing}">Add New Room Listing</a>
+              
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" th:href="@{/resume/viewAll}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Resume
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/resume/add}">Add</a>
+                        <a class="dropdown-item" th:href="@{/resume/viewAll}">View All</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
                 </li>
+
                 <li class="nav-item">
                     <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">logout</a>
-
-
-
-                    <!--                    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">-->
-<!--                        <input type="submit" value="logout">-->
-<!--                    </form>-->
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">login</a>
+                </li>
+
 
 
 
             </ul>
+<!--            Search Form-->
 <!--            <form class="form-inline my-2 my-lg-0">-->
 <!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
 <!--                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->

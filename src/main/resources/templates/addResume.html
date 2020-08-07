@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <div th:replace="base :: metaTags"></div>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
+    <title></title>
+</head>
+<body>
+
+<div th:replace="base :: navbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/resume/process}" th:object="${resume}" method="post" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}"> <br><br>
+                <div class="form-group">
+                    <label for="pages">Number Of pages</label><br>
+                    <input type="number" th:field="*{numberOfPages}" id="pages" class="form-control"> <br>
+                    <span th:if="${#fields.hasErrors('numberOfPages')}" th:errors="*{numberOfPages}"></span>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label for="file">Upload a Resume</label><br>
+                    <input type="file" name="file" id="file" class="form-control">
+                </divclass>
+                <br>
+
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="base :: BootStrapScripts"></div>
+</body>
+</html>

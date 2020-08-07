@@ -5,7 +5,7 @@
     <div th:replace="base :: metaTags"></div>
 
     <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
-    <title>Home</title>
+    <title></title>
 </head>
 <body>
 
@@ -14,11 +14,15 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <h2>Displaying cloudinary file</h2>
 
-            <h2>Welcome [[${currentUser}]]</h2>
-            <p th:if="${message}">[[${message}]]</p>
-
-
+            <div th:each="resume : ${resumes}">
+                <div th:if="${resume.fileUrl != null}">
+                    <p>Number of Page => [[${resume.numberOfPages}]]</p>
+                    <img th:src="${resume.fileUrl}" alt="File">
+                    <hr>
+                </div>
+            </div>
         </div>
     </div>
 </div>

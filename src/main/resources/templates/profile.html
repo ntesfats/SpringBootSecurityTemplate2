@@ -5,7 +5,7 @@
     <div th:replace="base :: metaTags"></div>
 
     <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
-    <title>Home</title>
+    <title>Profile</title>
 </head>
 <body>
 
@@ -14,11 +14,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-
-            <h2>Welcome [[${currentUser}]]</h2>
-            <p th:if="${message}">[[${message}]]</p>
-
-
+            <h1 id="profileWelcomeTitle">[[${currentUser}]] Page</h1>
         </div>
     </div>
 </div>
